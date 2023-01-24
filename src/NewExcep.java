@@ -22,17 +22,17 @@ public class NewExcep {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Вводите текст: ");
         String sb = scanner.nextLine();
-        List<Character> list = new ArrayList<>();
+        char[] list = new char[sb.length()];
         char[] glasnye = {'А', 'а', 'Е', 'е', 'и', 'И', 'О', 'о', 'Ю', 'ю', 'Э', 'э', 'У', 'у', 'Я', 'я', 'Ё', 'ё', 'ы' };
 
         for (int i = 0; i < sb.length(); i++) {
             boolean b = true;
             for (int j = 0; j < glasnye.length; j++) {
                 if (b) {
-                    list.add(i, sb.charAt(i));
+                    list[i] =  sb.charAt(i);
                     if (sb.charAt(i) == glasnye[j]) {
                         System.out.print(sb.charAt(i) + " ");
-                        list.set(i, ' ');
+                        list[i] = ' ';
                         b = false;
                     }
                 }
@@ -41,6 +41,9 @@ public class NewExcep {
         System.out.println("\n********");
        for (Character ch : list) {
            System.out.print(ch + " ");
+           if (ch == null) {
+               break;
+           }
        }
     }
     }

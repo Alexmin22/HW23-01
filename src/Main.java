@@ -1,37 +1,25 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
-public class Main {
-    //1.Перехватить исключение (и вывести его на экран), указав его тип, возникающее при выполнении кода:
-    //2.Перехватить исключение (и вывести его на экран), указав его тип, возникающее при выполнении кода:
-    //3.Перехватить исключение (и вывести его на экран), указав его тип, возникающее при выполнении кода:
-    //4.Перехватить исключение (и вывести его на экран), указав его тип, возникающее при выполнении кода:
-    public static void main(String[] args) throws Throwable {
-        try {
-            int a = 42 / 0;
-            System.out.println(a);
-            try {
-                String s = null;
-                s.toUpperCase();
-                try {
-                    ArrayList<String> list = new ArrayList<>();
-                    String st = list.get(18);
-                    try {
-                        HashMap<String, String> map = new HashMap<>(null);
-                        map.put(null, null);
-                        map.remove(null);
-                    } catch (NullPointerException np) {
-                        throw new Throwable(np.getMessage());
-                    }
-                } catch (IndexOutOfBoundsException inEx) {
-                    throw new RuntimeException().fillInStackTrace();
-                }
-                } catch (NullPointerException npe) {
-                throw new NullPointerException("Проблема со строкой S");
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Вводите текст: ");
+        StringBuilder sb = new StringBuilder(scanner.nextLine());
+        StringBuilder stringBuilder = new StringBuilder();
+        List<Character> list = new ArrayList<>(Arrays.asList('А', 'а', 'Е', 'е', 'и', 'И', 'О', 'о', 'Ю', 'ю', 'Э',
+                'э', 'У', 'у', 'Я', 'я', 'Ё', 'ё', 'ы'));
+
+        Iterator<Character> iterator = list.listIterator();
+
+        while (iterator.hasNext()) {
+            int index = sb.indexOf(String.valueOf(iterator.next()));
+            if(index >= 0) {
+                stringBuilder.append(sb.charAt(index));
+                sb.deleteCharAt(index);
             }
-            } catch (ArithmeticException e) {
-            throw new RuntimeException(e.toString());
         }
+
+        System.out.println(sb);
+        System.out.println(stringBuilder);
     }
 }
-
