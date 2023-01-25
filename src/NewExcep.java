@@ -1,7 +1,5 @@
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class NewExcep {
     //Написать программу, которая вводит с клавиатуры строку текста.
@@ -22,28 +20,22 @@ public class NewExcep {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Вводите текст: ");
         String sb = scanner.nextLine();
-        char[] list = new char[sb.length()];
+        char[] d = sb.toCharArray();
         char[] glasnye = {'А', 'а', 'Е', 'е', 'и', 'И', 'О', 'о', 'Ю', 'ю', 'Э', 'э', 'У', 'у', 'Я', 'я', 'Ё', 'ё', 'ы' };
 
-        for (int i = 0; i < sb.length(); i++) {
-            boolean b = true;
+        for (int i = 0; i < d.length; i++) {
             for (int j = 0; j < glasnye.length; j++) {
-                if (b) {
-                    list[i] =  sb.charAt(i);
-                    if (sb.charAt(i) == glasnye[j]) {
-                        System.out.print(sb.charAt(i) + " ");
-                        list[i] = ' ';
-                        b = false;
-                    }
+                if (d[i] == glasnye[j]) {
+                    System.out.print(d[i] + " ");
+                    d[i] = '0';
                 }
             }
         }
         System.out.println("\n********");
-       for (Character ch : list) {
-           System.out.print(ch + " ");
-           if (ch == null) {
-               break;
-           }
-       }
+        for (int i = 0; i < d.length; i++) {
+            if (d[i] != '0') {
+                System.out.print(d[i] + " ");
+            }
+        }
     }
     }
